@@ -126,19 +126,130 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
     'handlers': {
-        'file': {
+        'file_debug': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': 'debug.log',
+            'formatter': 'standard',
+        },
+        'file_user_data': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'user_data.log',
+            'formatter': 'standard',
+        },
+        'file_transaction': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'transaction.log',
+            'formatter': 'standard',
+        },
+        'file_user_management': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'user_management.log',
+            'formatter': 'standard',
+        },
+        'file_data_crud': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'data_crud.log',
+            'formatter': 'standard',
         },
     },
     'loggers': {
-        'django': {
-            'handlers': ['file'],
+        'user_data_logger': {
+            'handlers': ['file_user_data', 'file_debug'],
             'level': 'DEBUG',
             'propagate': True,
         },
-    },
+        'transaction_logger': {
+            'handlers': ['file_transaction', 'file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'create_user_logger': {
+            'handlers': ['file_user_management', 'file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'update_profile_logger': {
+            'handlers': ['file_user_management', 'file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'delete_account_logger': {
+            'handlers': ['file_user_management', 'file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'create_data_logger': {
+            'handlers': ['file_data_crud', 'file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'read_data_logger': {
+            'handlers': ['file_data_crud', 'file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'update_data_logger': {
+            'handlers': ['file_data_crud', 'file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'delete_data_logger': {
+            'handlers': ['file_data_crud', 'file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'upload_file_logger': {
+            'handlers': ['file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'download_file_logger': {
+            'handlers': ['file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'search_data_logger': {
+            'handlers': ['file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'send_email_logger': {
+            'handlers': ['file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'send_notification_logger': {
+            'handlers': ['file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'generate_report_logger': {
+            'handlers': ['file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'external_service_integration_logger': {
+            'handlers': ['file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }
+        # 'django': {  # Added logger for Django
+        #     'handlers': ['file_debug'],
+        #     'level': 'DEBUG',
+        #     'propagate': False,
+        # },
+    }
 }
+
 
